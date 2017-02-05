@@ -2,17 +2,19 @@
 /**
  * Created by PhpStorm.
  * User: admin-pc
- * Date: 2/4/2017
- * Time: 7:33 PM
+ * Date: 2/5/2017
+ * Time: 3:48 PM
  */
+
 
 include_once 'Controller/BookController.php';
 
 $bookController = new BookController();
-$stmt = $bookController->listAllBook();
+$keyWord = $_REQUEST['keyword'];
+$stmt = $bookController->searchBook($keyWord);
 
 if($stmt->rowCount() > 0){
-    echo "<table id='list-book' class='table table-bordered table-hover'>";
+    echo "<table id='search-book' class='table table-bordered table-hover'>";
 
     // creating our table heading
     echo "<tr>";
@@ -61,5 +63,5 @@ if($stmt->rowCount() > 0){
     echo "</table>";
 }
 else{
-    echo "<div class='alert alert-info'>No records found.</div>";
+    echo "<div id='alert' class='alert alert-info'>No records found.</div>";
 }

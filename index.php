@@ -18,6 +18,11 @@
                 <!-- this is the loader image, hidden at first -->
             </div><!-- page header -->
             <div class='margin-bottom-1em overflow-hidden'>
+                <div class ="search-container" id="search-container">
+                    <form action="post" id="'search-form">
+                        <input type="text" name = "keyword" id="search-box" class="form-control input-sm" placeholder="Search...">
+                    </form>
+                </div>
                 <!-- when clicked, it will show the product's list -->
                 <div id='all-book' class='btn btn-primary pull-right display-none'>
                     <span class='glyphicon glyphicon-list'></span> All Books
