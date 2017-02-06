@@ -66,17 +66,17 @@ echo "<nav class='overflow-hidden margin-bottom-1em'>";
 
 // ***** allow user to enter page number
 ?>
-    <form id='page-number-input-form'>
+
         <div class="input-group col-md-2 pull-right">
 
             <!-- hidden sorting field and order -->
-            <input type="number" class="form-control" name="page" min='1' required placeholder='Type page number...' />
+            <input type="number" id="go-to-page" class="form-control" name="page" min='1' required placeholder='Type page number...' />
 
             <div class="input-group-btn">
-                <button class="btn btn-primary" type="submit">Go</button>
+                <button id ='go-to-btn'class="btn btn-primary" type="button">Go</button>
             </div>
         </div>
-    </form>
+
 <?php
 
 echo "</nav>";

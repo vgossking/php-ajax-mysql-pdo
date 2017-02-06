@@ -137,4 +137,12 @@ $(document).ready(function (){
             }
         )
     });
+
+    $(document).on('click', '#go-to-btn',function () {
+        $("#loader-image").show();
+
+        var page = $('#go-to-page').val();
+
+        ShowBooks(page);
+        });
 });
