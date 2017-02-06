@@ -4,11 +4,10 @@ include_once $basePath."/Model/Book.php";
 include_once $basePath."/Controller/BookController.php";
 $bookID = isset($_GET['id']) ? $_GET['id']: die("<strong>ERROR</strong>");
 
-//$bookID = 1;
 $bookController = new BookController();
 $book = $bookController->getBookByID($bookID);
 ?>
-<form id='update-book-form' action='#' method='post' border='0'>
+<form id='update-book-form'  method='post' border='0'>
     <table class='table table-hover table-responsive table-bordered'>
         <tr>
             <td>Tên Sách</td>

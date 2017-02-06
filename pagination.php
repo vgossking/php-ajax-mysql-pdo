@@ -22,7 +22,7 @@ echo "<nav id='paging' class='overflow-hidden margin-bottom-1em'>";
     $total_pages = ceil($total_rows / $records_per_page);
 
     // range of num links to show
-    $range = 1;
+    $range = 3;
 
     // display links to 'range of pages' around 'current page'
     $initial_num = $page - $range;

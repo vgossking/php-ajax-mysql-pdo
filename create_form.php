@@ -1,4 +1,4 @@
-<form id='add-book-form' action='#' method='post' border='0'>
+<form id='add-book-form' action='' method='post' border='0'>
     <table class='table table-hover table-responsive table-bordered'>
         <tr>
             <td>Tên Sách</td>
