@@ -35,30 +35,41 @@ $(document).ready(function () {
         function (data) {
             $('#add-book').show();
             $('#all-book').hide();
-            ShowBooks();
+            ShowBooks(1);
         }
       )
    });
 
     $('#loader-image').show();
-    ShowBooks();
+    ShowBooks(1);
 
+    $(document).on("click", ".paging-btn", function(){
 
+        // show loader image
+        $("#loader-image").show();
+
+        // get the page number
+        var page = $(this).attr('page-num');
+
+        // read products
+        ShowBooks(page);
+
+    });
     $('#all-book').click(function(){
         ChangeTitle("All Books");
         $('#loader-image').show();
         btnToggle($('#all-book'),$('#add-book'));
-        ShowBooks();
+        ShowBooks(1);
     });
 });
 function btnToggle(elemHide, elemShow){
     elemHide.hide();
     elemShow.show();
 }
-function ShowBooks() {
+function ShowBooks(page) {
     $('#search-container').show();
     $('#page-content').fadeOut('slow', function(){
-        $('#page-content').load('AllBook.php', function(){
+        $('#page-content').load('AllBook.php?page='+page, function(){
             // hide loader image
             $('#loader-image').hide();
 
@@ -85,7 +96,7 @@ $(document).ready(function (){
                 $('#page-content').append(data);
             });
         } else if (keyWord.length == 0) {
-            ShowBooks();
+            ShowBooks(1);
             ChangeTitle('All Books');
         }
     });
@@ -110,7 +121,7 @@ $(document).ready(function (){
             function () {
                 $('#add-book').show();
                 $('#all-book').hide();
-                ShowBooks();
+                ShowBooks(1);
                 alert('delete success');
             }
         );
@@ -122,7 +133,7 @@ $(document).ready(function (){
             function (data) {
                 $('#add-book').show();
                 $('#all-book').hide();
-                ShowBooks();
+                ShowBooks(1);
             }
         )
     });

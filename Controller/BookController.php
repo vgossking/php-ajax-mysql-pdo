@@ -34,13 +34,17 @@ class BookController
         $stmt->execute();
     }
 
-    function listAllBook()
+    function listAllBook($recordStart, $recordPerPage)
     {
         $conn = Database::getInstancce()->getConnection();
-        $sql = "SELECT books.id, books.title, books.author, books.publisher, books.quantity, categories.name FROM " . $this->tableName . " INNER JOIN categories ON books.categoryId = categories.id ORDER BY books.title";
+        $sql = "SELECT books.id, books.title, books.author, books.publisher, books.quantity, categories.name FROM " . $this->tableName . " INNER JOIN categories 
+        ON books.categoryId = categories.id ORDER BY books.title 
+        LIMIT ?, ?";
 
         $stmt = $conn->prepare($sql);
 
+        $stmt->bindParam(1, $recordStart, PDO::PARAM_INT);
+        $stmt->bindParam(2, $recordPerPage, PDO::PARAM_INT);
         $stmt->execute();
 
         return $stmt;
@@ -98,5 +102,15 @@ class BookController
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(":id",$id);
         $stmt->execute();
+    }
+
+    public function countAll()
+    {
+        $query = "SELECT COUNT(*) as total_rows FROM " . $this->tableName . "";
+        $conn = Database::getInstancce()->getConnection();
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row['total_rows'];
     }
 }

@@ -7,9 +7,10 @@
  */
 
 include_once 'Controller/BookController.php';
-
+include_once 'Config/Paging.php';
 $bookController = new BookController();
-$stmt = $bookController->listAllBook();
+$stmt = $bookController->listAllBook($from_record_num, $records_per_page);
+$total_rows = $bookController->countAll();
 
 if($stmt->rowCount() > 0){
     echo "<table id='list-book' class='table table-bordered table-hover'>";
@@ -63,3 +64,4 @@ if($stmt->rowCount() > 0){
 else{
     echo "<div class='alert alert-info'>No records found.</div>";
 }
+include_once 'pagination.php';
