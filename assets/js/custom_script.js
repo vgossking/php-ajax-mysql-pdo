@@ -89,6 +89,7 @@ $(document).ready(function (){
         var keyWord = $(this).val();
         if (keyWord.length > 2) {
             $('#alert').remove();
+            $('#paging').remove();
             $.post("SearchBook.php", {keyword: keyWord}).done(function (data) {
                 $('#loader-image').show();
                 $('#list-book').remove();

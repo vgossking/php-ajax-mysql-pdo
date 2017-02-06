@@ -1,6 +1,6 @@
 <?php
 // *************** <PAGING_SECTION> ***************
-echo "<nav class='overflow-hidden margin-bottom-1em'>";
+echo "<nav id='paging' class='overflow-hidden margin-bottom-1em'>";
     echo "<ul class='pagination pull-left margin-zero'>";
 
     // ***** for 'first' and 'previous' pages
@@ -72,9 +72,13 @@ echo "<nav class='overflow-hidden margin-bottom-1em'>";
             <!-- hidden sorting field and order -->
            <!-- <input type="number" id="go-to-page" class="form-control" name="page" min='1' required placeholder='Type page number...' /> -->
             <select id="go-to-page" class='form-control'>
-                <?php  for($i = 1; $i <= $total_pages; $i++){?>
-                    <option value="<?php echo $i ?>"><?php echo $i ?></option>
-                    <?php } ?>
+                <?php  for($i = 1; $i <= $total_pages; $i++){
+                    if($i == $page){ ?>
+                        <option value="<?php echo $i ?>" selected><?php echo $i ?></option>
+                    <?php }else{?>
+                        <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                      <?php  }
+                    }?>
             </select>
 
             <div class="input-group-btn">
