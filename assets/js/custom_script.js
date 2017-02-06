@@ -66,6 +66,7 @@ function btnToggle(elemHide, elemShow){
     elemHide.hide();
     elemShow.show();
 }
+//load page all book with param page
 function ShowBooks(page) {
     $('#search-container').show();
     $('#page-content').fadeOut('slow', function(){
@@ -137,12 +138,10 @@ $(document).ready(function (){
             }
         )
     });
-
+    //go to page 
     $(document).on('click', '#go-to-btn',function () {
         $("#loader-image").show();
-
         var page = $('#go-to-page').val();
-
         ShowBooks(page);
-        });
+    });
 });

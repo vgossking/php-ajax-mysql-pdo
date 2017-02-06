@@ -70,7 +70,12 @@ echo "<nav class='overflow-hidden margin-bottom-1em'>";
         <div class="input-group col-md-2 pull-right">
 
             <!-- hidden sorting field and order -->
-            <input type="number" id="go-to-page" class="form-control" name="page" min='1' required placeholder='Type page number...' />
+           <!-- <input type="number" id="go-to-page" class="form-control" name="page" min='1' required placeholder='Type page number...' /> -->
+            <select id="go-to-page" class='form-control'>
+                <?php  for($i = 1; $i <= $total_pages; $i++){?>
+                    <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                    <?php } ?>
+            </select>
 
             <div class="input-group-btn">
                 <button id ='go-to-btn'class="btn btn-primary" type="button">Go</button>
