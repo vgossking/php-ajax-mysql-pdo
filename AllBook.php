@@ -9,10 +9,9 @@
 include_once 'Controller/BookController.php';
 include_once 'Config/Paging.php';
 $bookController = new BookController();
-$stmt = $bookController->listAllBook($from_record_num, $records_per_page);
+$books = $bookController->listAllBook($from_record_num, $records_per_page);
 $total_rows = $bookController->countAll();
-
-if($stmt->rowCount() > 0){
+if(!empty($books)){
     echo "<table id='list-book' class='table table-bordered table-hover'>";
 
     // creating our table heading
@@ -28,22 +27,23 @@ if($stmt->rowCount() > 0){
     // retrieve our table contents
     // fetch() is faster than fetchAll()
     // http://stackoverflow.com/questions/2770630/pdofetchall-vs-pdofetch-in-a-loop
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-        // extract row
-        // this will make $row['name'] to
-        // just $name only
-        extract($row);
-
+    foreach ($books as $book){
+        $id = $book->getId();
+        $title = $book->getTitle();
+        $author = $book->getAuthor();
+        $publisher = $book->getPublisher();
+        $quantity = $book->getQuantity();
+        $category = $book->name;
         // creating new table row per record
         echo "<tr>";
-        echo "<td>{$title}</td>";
-        echo "<td>{$author}</td>";
-        echo "<td>{$publisher}</td>";
-        echo "<td>{$quantity}</td>";
-        echo "<td>{$name}</td>";
+        echo "<td>".$title."</td>";
+        echo "<td>".$author."</td>";
+        echo "<td>".$publisher."</td>";
+        echo "<td>".$quantity."</td>";
+        echo "<td>".$category."</td>";
         echo "<td style='text-align:center;'>";
         // add the record id here, it is used for editing and deleting products
-        echo "<div class='book-id display-none'>{$id}</div>";
+        echo "<div class='book-id display-none'>".$id."</div>";
 
         // edit button
         echo "<div class='btn btn-info edit-btn margin-right-1em'>";

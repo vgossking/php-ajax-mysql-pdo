@@ -7,6 +7,7 @@
  */
 $basePath = $_SERVER['DOCUMENT_ROOT'];
 include_once $basePath."/Config/Database.php";
+include_once $basePath."/Model/Book.php";
 
 class BookController
 {
@@ -46,8 +47,11 @@ class BookController
         $stmt->bindParam(1, $recordStart, PDO::PARAM_INT);
         $stmt->bindParam(2, $recordPerPage, PDO::PARAM_INT);
         $stmt->execute();
-
-        return $stmt;
+        $books = array();
+        while($book = $stmt->fetchObject('Book')){
+                $books[] = $book;
+        }
+        return $books;
     }
 
     function searchBook($keyWord){
