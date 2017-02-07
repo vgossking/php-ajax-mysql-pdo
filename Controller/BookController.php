@@ -59,9 +59,13 @@ class BookController
         $sql = "SELECT books.id, books.title, books.author, books.publisher, books.quantity, categories.name FROM " . $this->tableName . " INNER JOIN categories 
         ON books.categoryId = categories.id  WHERE books.title LIKE '%".$keyWord."%' ORDER BY books.title";
         $stmt = $conn->prepare($sql);
-        //$stmt->bindParam(":keyword", $keyWord);
         $stmt->execute();
-        return $stmt;
+        //$stmt->bindParam(":keyword", $keyWord);
+        $books = array();
+        while($book = $stmt->fetchObject('Book')){
+                $books[] = $book;
+        }
+        return $books;
     }
 
     function getBookByID($id){
