@@ -32,13 +32,14 @@ $book = $bookController->getBookByID($bookID);
                     <?php
                     include_once $basePath."/Controller/CategoryController.php";
                     $categoryController = new CategoryController();
-                    $stmt = $categoryController->listCategory();
-                    while($row_category = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                        extract($row_category);
-                        if($row_category['id'] == $book->getCategoryID()) {
-                            echo "<option value='{$id}' selected>{$name}</option>";
+                    $categories = $categoryController->listCategory();
+                    foreach($categories as $category) {
+                        $id = $category->getId();
+                        $name = $category->getName();
+                        if($id == $book->getCategoryID()) {
+                            echo "<option value='".$id."' selected>".$name."</option>";
                         }else{
-                            echo "<option value='{$id}'>{$name}</option>";
+                            echo "<option value='".$id."'>".$name."</option>";
                         }
                     }
                     ?>

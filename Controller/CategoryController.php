@@ -7,6 +7,7 @@
  */
     $basePath = $_SERVER['DOCUMENT_ROOT'];
     include_once $basePath."/Config/Database.php";
+    include_once $basePath."/Model/Category.php";
     class CategoryController{
         private $tableName = "categories";
         function listCategory()
@@ -15,6 +16,10 @@
             $sql = "SELECT id,name FROM " . $this->tableName . " ORDER BY name";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
-            return $stmt;
+            $categories = array();
+            while($category = $stmt->fetchObject('Category')){
+                $categories[] = $category;
+            }
+            return $categories;
         }
     }

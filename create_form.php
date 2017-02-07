@@ -22,12 +22,14 @@
                 <select class='form-control' name='category'>
                     <?php
                         include_once "Controller/CategoryController.php";
-                        $categoryController = new CategoryController();
-                        $stmt = $categoryController->listCategory();
-                        while($row_category = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                            extract($row_category);
-                            echo "<option value='{$id}'>{$name}</option>";
+                        $categoryController = new CategoryController();  
+                        $categories = $categoryController->listCategory();                     
+                        foreach($categories as $category) {   
+                            $id = $category->getId();     
+                            $name = $category->getName();                   
+                            echo "<option value='".$id."'>".$name."</option>";
                         }
+
                     ?>
                 </select>
             </td>
