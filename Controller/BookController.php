@@ -75,14 +75,7 @@ class BookController
         $stmt->bindParam(":id", $id);
         $stmt->execute();
 
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        $book = new Book();
-        $book->setId($row['id']);
-        $book->setTitle($row['title']);
-        $book->setAuthor($row['author']);
-        $book->setPublisher($row['publisher']);
-        $book->setQuantity($row['quantity']);
-        $book->setCategoryID($row['categoryId']);
+        $book = $stmt->fetchObject('Book');
         return $book;
     }
     function updateBook(Book $book){

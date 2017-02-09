@@ -19,7 +19,7 @@ $book = $bookController->getBookByID($bookID);
         </tr>
         <tr>
             <td>Nhà xuất bản</td>
-            <td><input type='text' min='1' name='publisher' class='form-control' value = "<?php echo $book->getPublisher() ?>" required /></td>
+            <td><input type='text' name='publisher' class='form-control' value = "<?php echo $book->getPublisher() ?>" required /></td>
 
         <tr>
             <td>Số lượng</td>

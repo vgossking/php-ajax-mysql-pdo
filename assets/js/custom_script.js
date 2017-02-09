@@ -145,4 +145,28 @@ $(document).ready(function (){
         var page = $('#go-to-page').val();
         ShowBooks(page);
     });
+
+    $('#user-login').click(function () {
+        var username = $('#lg_username').val();
+        var password = $('#lg_password').val();
+        if(username.length > 4 && password.length > 4){
+            $.post(
+                'service/LogInService.php',
+                {
+                    username: username,
+                    password: password
+                }
+            ).done(function (data) {
+                if(data == 0) {
+                    $('.login-form-main-message').html("Username or password is not correct");
+                    $('.login-form-main-message').css({'opacity': 1, 'margin-bottom': '50px'});
+                }else{
+                    window.location.href = 'http://library.dev';
+                }
+            });
+        }else{
+            $('.login-form-main-message').text("Username and password must have more than 6 letters");
+            $('.login-form-main-message').css({'opacity':1, 'margin-bottom':'50px'});
+        }
+    });
 });

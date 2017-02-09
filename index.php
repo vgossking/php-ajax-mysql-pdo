@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,12 +13,21 @@
 </head>
 <body>
 <!-- container -->
+     <?php
+     session_start();
+        if (!isset($_SESSION['userId'])){
+          header('Location: http://' . $_SERVER['HTTP_HOST'] . '/login.php');;
+          exit;
+       } ?> 
     <div class="container">
 
         <div class='page-header'>
             <h1 id='page-title'>All Books</h1>
                 <!-- this is the loader image, hidden at first -->
-            </div><!-- page header -->
+            <div class="user-info pull-right">
+                <p >Hello <?php echo $_SESSION['username']?>, <a href="/logout.php">Log Out</a></p>
+            </div>
+        </div><!-- page header -->
             <div class='margin-bottom-1em overflow-hidden'>
                 <div class ="search-container" id="search-container">
                     <form action="post" id="'search-form">
