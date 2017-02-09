@@ -161,12 +161,32 @@ $(document).ready(function (){
                     $('.login-form-main-message').html("Username or password is not correct");
                     $('.login-form-main-message').css({'opacity': 1, 'margin-bottom': '50px'});
                 }else{
-                    window.location.href = 'http://library.dev';
+                    window.location.href = 'http://'+window.location.hostname;
                 }
             });
         }else{
             $('.login-form-main-message').text("Username and password must have more than 6 letters");
             $('.login-form-main-message').css({'opacity':1, 'margin-bottom':'50px'});
+        }
+    });
+
+    $('#edit-info').click(function () {
+        $('#page-content').fadeOut('slow',function () {
+           $('#page-content').load('ChangePassword.php', function () {
+               $('#add-book').hide();
+               $('#all-book').show();
+               $('#search-container').hide();
+               $('#loader-image').hide();
+               $('#page-content').fadeIn('slow');
+           });
+        });
+    });
+
+    $(document).on("click", "#change-pwd-btn",function () {
+        var newPwd = $('#new-pw').val();
+        var oldPwd = $('#old-pw').val();
+        if(newPwd != oldPwd){
+            alert('Mat khau khong trung khop');
         }
     });
 });

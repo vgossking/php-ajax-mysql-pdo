@@ -43,6 +43,9 @@
                 <div id='add-book' class='btn btn-primary pull-right'>
                     <span class='glyphicon glyphicon-plus'></span> Add Book
                 </div>
+                <div id='edit-info' class='btn btn-success pull-right' style="margin-right: 10px">
+                    <span class='glyphicon glyphicon-list'></span>Edit User Information
+                </div>
             </div>
             <div id='page-content'>
                 <div id='loader-image' class = "loader-image"><img src='/assets/image/ajax-loader.gif  ' /></div>
