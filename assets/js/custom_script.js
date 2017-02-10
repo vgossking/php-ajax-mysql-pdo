@@ -182,6 +182,8 @@ $(document).ready(function (){
         });
     });
 
+
+    //Hanle Change Password
     $(document).on("click", "#change-pwd-btn",function () {
         var newPwd = $('#new-pw').val();
         var oldPwd = $('#old-pw').val();
@@ -190,7 +192,7 @@ $(document).ready(function (){
             $('#change-pwd-notice').removeClass('display-none').html('Password does not match');
         }
         else if(newPwd.length < 5 && oldPwd.length < 5 && rptPwd.length < 5){
-            $('#change-pwd-notice').removeClass('display-none').html('Password length must more than 4 letter');
+            $('#change-pwd-notice').removeClass('display-none').html('Password length must be more than 4 letter');
         }
         else{
             $.post(

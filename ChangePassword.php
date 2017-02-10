@@ -31,6 +31,6 @@
 
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-        <button id="change-pwd-btn" class="btn btn-success">Edit Info</button>
+        <button id="change-pwd-btn" class="btn btn-success"><span class='glyphicon glyphicon-pencil'></span> Edit Info</button>
     </div>
 </div>

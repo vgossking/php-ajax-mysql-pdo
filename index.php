@@ -31,7 +31,7 @@
             <div class='margin-bottom-1em overflow-hidden'>
                 <div class ="search-container" id="search-container">
                     <form action="post" id="'search-form">
-                        <input typ`e="text" name = "keyword" id="search-box" class="form-control input-sm" placeholder="Search...">
+                        <input type="text" name = "keyword" id="search-box" class="form-control input-sm" placeholder="Search...">
                     </form>
                 </div>
                 <!-- when clicked, it will show the product's list -->
@@ -44,7 +44,7 @@
                     <span class='glyphicon glyphicon-plus'></span> Add Book
                 </div>
                 <div id='edit-info' class='btn btn-success pull-right' style="margin-right: 10px">
-                    <span class='glyphicon glyphicon-list'></span>Edit User Information
+                    <span class='glyphicon glyphicon-list'></span> Change Password
                 </div>
             </div>
             <div id='page-content'>
