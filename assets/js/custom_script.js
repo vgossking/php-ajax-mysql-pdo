@@ -201,9 +201,9 @@ $(document).ready(function (){
                 }
             ).done(function (data) {
                 if(data == 1){
-                    $('#change-pwd-notice').removeClass('display-none').html('Old password is not right');
+                    $('#change-pwd-notice').removeClass('display-none alert-success').addClass("alert-danger").html('Old password is not right');
                 }else{
-                    $('#change-pwd-notice').removeClass("display-none alert-danger").addClass("alert alert-success").html('Change password success');
+                    $('#change-pwd-notice').removeClass("display-none alert-danger").addClass("alert-success").html('Change password success');
                 }
             });
         }
