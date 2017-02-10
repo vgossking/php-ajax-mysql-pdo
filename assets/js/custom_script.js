@@ -204,6 +204,9 @@ $(document).ready(function (){
                     $('#change-pwd-notice').removeClass('display-none alert-success').addClass("alert-danger").html('Old password is not right');
                 }else{
                     $('#change-pwd-notice').removeClass("display-none alert-danger").addClass("alert-success").html('Change password success');
+                    $('#old-pw').val("");
+                    $('#new-pw').val("");
+                    $('#rpt-pwd').val("");
                 }
             });
         }
