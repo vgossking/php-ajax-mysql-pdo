@@ -26,4 +26,28 @@ Class UserController{
         }
         return 0;
     }
+
+    function checkPassword($id, $oldPassword){
+        $conn = Database::getInstancce()->getConnection();
+        $sql = 'SELECT password from users WHERE id =:id';
+        $stmt =$conn->prepare($sql);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if($row['password'] == $oldPassword){
+            return true;
+        }
+        return false;
+    }
+
+    function changePassword(User $user){
+        $userId = $user->getId();
+        $userPwd = $user->getPassword();
+        $conn = Database::getInstancce()->getConnection();
+        $sql = "UPDATE users SET password =:password WHERE id =:id";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(":password", $userPwd);
+        $stmt->bindParam(":id", $userId);
+        $stmt->execute();
+    }
 }

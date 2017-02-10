@@ -185,8 +185,27 @@ $(document).ready(function (){
     $(document).on("click", "#change-pwd-btn",function () {
         var newPwd = $('#new-pw').val();
         var oldPwd = $('#old-pw').val();
-        if(newPwd != oldPwd){
-            alert('Mat khau khong trung khop');
+        var rptPwd = $('#rpt-pwd').val();
+        if(newPwd != rptPwd){
+            $('#change-pwd-notice').removeClass('display-none').html('Password does not match');
+        }
+        else if(newPwd.length < 5 && oldPwd.length < 5 && rptPwd.length < 5){
+            $('#change-pwd-notice').removeClass('display-none').html('Password length must more than 4 letter');
+        }
+        else{
+            $.post(
+                'service/ChangePasswordService.php',
+                {
+                    oldPwd : oldPwd,
+                    newPwd : newPwd
+                }
+            ).done(function (data) {
+                if(data == 1){
+                    $('#change-pwd-notice').removeClass('display-none').html('Old password is not right');
+                }else{
+                    $('#change-pwd-notice').removeClass("display-none alert-danger").addClass("alert alert-success").html('Change password success');
+                }
+            });
         }
     });
 });
