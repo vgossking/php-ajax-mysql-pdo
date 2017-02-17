@@ -10,7 +10,7 @@ include_once $basePath."/Controller/BookController.php";
  $book->setAuthor($_POST['author']);
  $book->setPublisher($_POST['publisher']);
  $book->setQuantity($_POST['quantity']);
- $book->setCategoryID($_POST['category']);
+ $book->setCategoryId($_POST['category']);
 
  $bookController = new BookController();
  $bookController->addBook($book);

@@ -24,7 +24,7 @@ class BookController
         $author = $book->getAuthor();
         $publisher = $book->getPublisher();
         $quantity = $book->getQuantity();
-        $catId = $book->getCategoryID();
+        $catId = $book->getCategoryId();
 
         $stmt->bindParam(":title", $title);
         $stmt->bindParam(":author", $author);
@@ -86,7 +86,7 @@ class BookController
         $author = $book->getAuthor();
         $publisher = $book->getPublisher();
         $quantity = $book->getQuantity();
-        $catId = $book->getCategoryID();
+        $catId = $book->getCategoryId();
         $id = $book->getId();
 
         $stmt->bindParam(":title", $title);

@@ -100,9 +100,9 @@
         /**
          * @param mixed $categoryID
          */
-        public function setCategoryID($categoryID)
+        public function setCategoryId($categoryId)
         {
-            $this->categoryID = $categoryID;
+            $this->categoryId = $categoryId;
         }
 
 	}
