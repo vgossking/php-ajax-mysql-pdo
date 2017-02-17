@@ -33,10 +33,11 @@ $book = $bookController->getBookByID($bookID);
                     include_once $basePath."/Controller/CategoryController.php";
                     $categoryController = new CategoryController();
                     $categories = $categoryController->listCategory();
+                    $bookCatId = $book->getCategoryId();
                     foreach($categories as $category) {
                         $id = $category->getId();
                         $name = $category->getName();
-                        if($id == $book->getCategoryID()) {
+                        if($id == $bookCatId) {
                             echo "<option value='".$id."' selected>".$name."</option>";
                         }else{
                             echo "<option value='".$id."'>".$name."</option>";

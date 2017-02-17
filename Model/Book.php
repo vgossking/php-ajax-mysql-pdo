@@ -5,7 +5,7 @@
 		private $author;
 		private $publisher;
 		private $quantity;
-		private $categoryID;
+		private $categoryId;
 
 		function __construct(){}
 
@@ -92,9 +92,9 @@
         /**
          * @return mixed
          */
-        public function getCategoryID()
+        public function getCategoryId()
         {
-            return $this->categoryID;
+            return $this->categoryId;
         }
 
         /**
